@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from qdrant_client import QdrantClient
 import os
 from langchain_community.embeddings import HuggingFaceInstructEmbeddings
-from langchain_community.llms import HuggingFaceEndpoint
+#from langchain_community.llms import HuggingFaceEndpoint
 from langchain_core.messages import AIMessage, HumanMessage
 
 
@@ -44,7 +44,7 @@ def main():
     
     # create chain 
     qa = RetrievalQA.from_chain_type(
-        llm = ChatOpenAI()
+        llm = ChatOpenAI(model_name='gpt-3.5-turbo-16k'),
         #llm= HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.2", max_length=128, temperature=0.5),
         chain_type="stuff",
         retriever=vector_store.as_retriever()

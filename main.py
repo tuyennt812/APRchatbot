@@ -4,16 +4,18 @@ from langchain.llms import OpenAI
 from langchain.vectorstores import Qdrant
 from langchain.embeddings.openai import OpenAIEmbeddings
 import qdrant_client
+from langchain_community.vectorstores import Qdrant
 from dotenv import load_dotenv
+from qdrant_client import QdrantClient
 import os
 from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain_community.llms import HuggingFaceEndpoint
 from langchain_core.messages import AIMessage, HumanMessage
-load_dotenv()
+
 
 def get_vector_store():
     
-    client = qdrant_client.QdrantClient(
+    client = QdrantClient(
         os.getenv("QDRANT_HOST"),
         api_key=os.getenv("QDRANT_API_KEY")
     )

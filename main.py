@@ -2,7 +2,7 @@ import streamlit as st
 from langchain.chains import RetrievalQA
 from langchain.llms import OpenAI
 from langchain.vectorstores import Qdrant
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain_openai import ChatOpenAI
 import qdrant_client
 from langchain_community.vectorstores import Qdrant
 from dotenv import load_dotenv
@@ -44,7 +44,8 @@ def main():
     
     # create chain 
     qa = RetrievalQA.from_chain_type(
-        llm= HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.2", max_length=128, temperature=0.5),
+        llm = ChatOpenAI()
+        #llm= HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.2", max_length=128, temperature=0.5),
         chain_type="stuff",
         retriever=vector_store.as_retriever()
     )

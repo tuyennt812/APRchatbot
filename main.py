@@ -1,14 +1,13 @@
 import streamlit as st
 from langchain.chains import RetrievalQA
-from langchain.llms import OpenAI
 from langchain.vectorstores import Qdrant
+from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
-import qdrant_client
 from langchain_community.vectorstores import Qdrant
 from dotenv import load_dotenv
 from qdrant_client import QdrantClient
 import os
-from langchain_community.embeddings import HuggingFaceInstructEmbeddings
+#from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 #from langchain_community.llms import HuggingFaceEndpoint
 from langchain_core.messages import AIMessage, HumanMessage
 
@@ -20,7 +19,7 @@ def get_vector_store():
         api_key=os.getenv("QDRANT_API_KEY")
     )
     
-    embeddings = HuggingFaceInstructEmbeddings()
+    embeddings = OpenAIEmbeddings()
 
     vector_store = Qdrant(
         client=client, 

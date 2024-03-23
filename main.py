@@ -68,7 +68,7 @@ def main():
                 db = ["Crosscutting_Indicator_Annex.csv", "Output_Indicator_Annex.csv"]
                 
                 agent = create_csv_agent(
-                    ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613"),
+                    ChatOpenAI(temperature=0.3, model="gpt-3.5-turbo-0613"),
                     db,
                     verbose=True,
                     agent_type=AgentType.OPENAI_FUNCTIONS,
@@ -115,7 +115,7 @@ def main():
         
         # create chain 
         qa = RetrievalQA.from_chain_type(
-            llm = ChatOpenAI(model_name='gpt-3.5-turbo-16k'),
+            llm = ChatOpenAI(temperature=0.3,model_name='gpt-3.5-turbo-16k'),
             #llm= HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.2", max_length=128, temperature=0.5),
             chain_type="stuff",
             retriever=vector_store.as_retriever()

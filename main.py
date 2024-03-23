@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from streamlit_option_menu import option_menu
 from langchain.agents.agent_types import AgentType
 from langchain_experimental.agents.agent_toolkits import create_csv_agent
-from langchain_openai import ChatOpenAI, OpenAI,OpenAIEmbeddings
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain.chains import RetrievalQA
 from langchain.vectorstores import Qdrant
